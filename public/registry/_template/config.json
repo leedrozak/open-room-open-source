@@ -1,0 +1,16 @@
+{
+  "room_display_name": "Your Room Name",
+  "owner": "your-github-username",
+  "background_image": "/registry/your-room-id/background.jpeg",
+  "hotspots": [
+    {
+      "id": "unique-hotspot-id",
+      "label": "What shows in the tooltip",
+      "x": 40,
+      "y": 40,
+      "width": 15,
+      "height": 20,
+      "action": "navigate_floor"
+    }
+  ]
+}
