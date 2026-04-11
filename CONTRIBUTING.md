@@ -34,6 +34,6 @@ By submitting a Pull Request, you grant the Open Room project a perpetual, non-e
 
 ## Building codes
 
-- Background image: JPEG or WebP, **max 200KB**
-- Total room folder: **max 5MB**
-- One room per contributor
+- Every image in the room, including background images: JPEG or WebP, max 200KB
+- Total room folder: max 5MB
+- One room per builder. Exceptions by request.
