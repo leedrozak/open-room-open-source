@@ -55,6 +55,7 @@ export default function RoomView({ onBack, registryId, room }: {
   const [showRoomInfo, setShowRoomInfo] = useState(false);
   const [editRequested, setEditRequested] = useState(false);
   const [editLoading, setEditLoading] = useState(false);
+  const [editError, setEditError] = useState(false);
 
   useEffect(() => {
     fetch(`/registry/${registryId}/config.json`)
@@ -77,7 +78,8 @@ export default function RoomView({ onBack, registryId, room }: {
       },
     });
     setEditLoading(false);
-    if (!error) setEditRequested(true);
+    if (error) setEditError(true);
+    else setEditRequested(true);
   };
 
   const openRegistry = async () => {
@@ -228,6 +230,8 @@ export default function RoomView({ onBack, registryId, room }: {
               <div className="mt-3 pt-3 border-t border-slate-100">
                 {editRequested ? (
                   <p className="text-xs text-center text-green-600 font-bold">Edit request submitted!</p>
+                ) : editError ? (
+                  <p className="text-xs text-center text-red-500 font-bold">Something went wrong. Try again.</p>
                 ) : (
                   <button
                     onClick={requestEdit}

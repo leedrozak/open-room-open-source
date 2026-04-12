@@ -3,15 +3,24 @@ import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 const GITHUB_TOKEN = Deno.env.get('GITHUB_TOKEN')!;
 const GITHUB_REPO = 'alyssafuward/open-room-open-source';
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
+
 serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
+  }
+
   if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
+    return new Response('Method not allowed', { status: 405, headers: corsHeaders });
   }
 
   const { registryId, githubUsername, gridX, gridY } = await req.json();
 
   if (!registryId || !githubUsername) {
-    return new Response('Missing required fields', { status: 400 });
+    return new Response('Missing required fields', { status: 400, headers: corsHeaders });
   }
 
   const title = `Edit request: ${registryId} (@${githubUsername})`;
@@ -41,10 +50,13 @@ serve(async (req) => {
   if (!response.ok) {
     const error = await response.text();
     console.error('GitHub API error:', error);
-    return new Response('Failed to create issue', { status: 500 });
+    return new Response('Failed to create issue', { status: 500, headers: corsHeaders });
   }
 
   const issue = await response.json();
   console.log(`Created issue #${issue.number}: ${title}`);
-  return new Response(JSON.stringify({ issue: issue.number, url: issue.html_url }), { status: 200 });
+  return new Response(JSON.stringify({ issue: issue.number, url: issue.html_url }), {
+    status: 200,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  });
 });
