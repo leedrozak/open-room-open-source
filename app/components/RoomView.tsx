@@ -310,7 +310,7 @@ export default function RoomView({ onBack, registryId, room }: {
           onClick={() => setActiveModal(null)}
         >
           <div
-            className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl"
+            className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl overflow-y-auto max-h-[90vh]"
             onClick={e => e.stopPropagation()}
           >
             <h2 className="text-slate-900 text-2xl font-black tracking-tight mb-1">Welcome to Open Room</h2>
