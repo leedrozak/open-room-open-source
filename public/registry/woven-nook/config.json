@@ -18,6 +18,16 @@
       "url": "https://threshold-chi.vercel.app"
     },
     {
+      "id": "asks-wall",
+      "label": "In Search Of",
+      "x": 75,
+      "y": 25,
+      "width": 20,
+      "height": 30,
+      "action": "open_image",
+      "image_url": "https://threshold-chi.vercel.app/api/asks-wall.png"
+    },
+    {
       "id": "exit",
       "label": "Exit to Floor Plan",
       "x": 0,
