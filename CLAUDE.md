@@ -26,12 +26,13 @@ If no issue is found, they haven't reserved yet — tell them to visit the live 
 
 1. **Fork** — confirm they've forked `github.com/alyssafuward/open-room-open-source` to their GitHub account
 2. **Clone** — clone their fork locally
-3. **Copy the template** — `cp -r public/registry/_template/ public/registry/their-room-id/`
-4. **Background image** — help them choose or generate one. Landscape images work best. Remind them: JPEG or WebP, max 200KB
-5. **config.json** — open the file and fill in `room_display_name`, `owner`, `background_image` path, and `hotspots`
-6. **Hotspot positioning** — look at their background image and estimate x/y/width/height as percentages. Every room needs at least one `navigate_floor` hotspot (their "door")
-7. **Commit and push** to their fork
-8. **Pull Request** — open a PR from their fork to the main repo. Help them write the description and remind them to attach a screenshot
+3. **Create a feature branch** - Immediately after confirming the room ID, look up the issue number from the `gh issue list` output and create the branch as room/ISSUE_NUMBER-room-id (e.g. room/101-dappled-canyon) before doing any other git work. 
+4. **Copy the template** — `cp -r public/registry/_template/ public/registry/their-room-id/`
+5. **Background image** — help them choose or generate one. Landscape images work best. Remind them: JPEG or WebP, max 200KB
+6. **config.json** — open the file and fill in `room_display_name`, `owner`, `background_image` path, and `hotspots`
+7. **Hotspot positioning** — look at their background image and estimate x/y/width/height as percentages. Every room needs at least one `navigate_floor` hotspot (their "door")
+8. **Commit and push** to their fork
+9. **Pull Request** — open a PR from their fork to the main repo. Help them write the description and remind them to attach a screenshot
 
 ## No database setup needed
 
